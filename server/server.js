@@ -38,10 +38,10 @@ app.use("/consultation", ConsultationRouter);
 
 // Add this route to handle Zoom email scheduling
 app.post("/api/schedule", async (req, res) => {
-  const { clientName, email } = req.body;
+  const { clientName, email, date, time, lawyerName  } = req.body;
 
   try {
-    await sendZoomEmail(email, clientName);
+    await sendZoomEmail(email, clientName, date, time, lawyerName);
     res.status(200).json({ message: "Zoom ID sent to email." });
   } catch (err) {
     console.error("Error in sending email:", err);

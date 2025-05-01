@@ -35,8 +35,7 @@ const Consultation = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
   const [formVisible, setFormVisible] = useState(false);
-  const clientName = 'Nipuni';
-  const email = 'nipunigunawardana777@gmail.com';
+  
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -184,7 +183,10 @@ const Consultation = () => {
           try {
             await axios.post("http://localhost:8000/api/schedule", {
               clientName: formData.fullName,
-              email: formData.email
+              email: formData.email,
+              date: selectedDate,
+  time: selectedTimeSlot,
+  lawyerName: lawyer.name,
             });
             alert("Zoom ID sent to your email!");
           } catch (emailErr) {

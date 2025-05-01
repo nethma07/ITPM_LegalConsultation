@@ -112,7 +112,7 @@ const ViewAppointment = () => {
 
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 4 }}>
           <Button variant="contained" color="primary" onClick={handleReschedule} sx={{ borderRadius: "20px" }}>
-            Reschedule
+            Reschedule Appointment
           </Button>
           <Button variant="contained" color="error" onClick={handleCancel} sx={{ borderRadius: "20px" }}>
             Cancel Appointment

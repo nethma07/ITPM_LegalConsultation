@@ -11,22 +11,34 @@ function generateFakeZoomID() {
 }
 
 // Function to send the Zoom ID email
-export async function sendZoomEmail(toEmail, clientName) {
-  const zoomID = generateFakeZoomID();
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-  });
+const sendZoomEmail = async (toEmail, clientName, date, time, lawyerName) => {
+    const zoomID = generateFakeZoomID();
+  
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      }
+    });
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: toEmail,
     subject: 'Your Legal Consultation Zoom Meeting',
-    text: `Hi ${clientName},\n\nYour consultation meeting is scheduled.\nHere is your Zoom meeting ID: ${zoomID}\n\nThank you,\nSmart Legal`
+    text: `Hi ${clientName},
+    
+Your legal consultation meeting has been scheduled successfully.
+
+📅 Date: ${date}
+⏰ Time: ${time}
+👨‍⚖️ Lawyer: ${lawyerName}
+🔗 Zoom Meeting ID: ${zoomID}
+
+Please join the Zoom meeting at the scheduled time.
+
+Thank you,
+Smart Legal`
   };
 
   try {
@@ -36,3 +48,5 @@ export async function sendZoomEmail(toEmail, clientName) {
     console.error('❌ Error sending email:', err);
   }
 }
+export { sendZoomEmail };
+

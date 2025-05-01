@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const teamMembers = [
   {
-    name: "Adam Foster",
+    name: "Mr Adam Foster",
     role: "Consultant",
     category: "All",
     image: "/images/Adam-F.jpg",
@@ -12,7 +12,7 @@ const teamMembers = [
     description: "Adam provides strategic legal advice to clients, helping them navigate complex legal matters efficiently."
   },
   {
-    name: "Adam Ringel",
+    name: "Mr Adam Ringel",
     role: "Senior Consultant",
     category: "Senior Consultant",
     image: "/images/Adam-r.jpg",
@@ -20,7 +20,7 @@ const teamMembers = [
     description: "Adam assists businesses in drafting contracts, handling disputes, and ensuring legal compliance in corporate operations."
   },
   {
-    name: "Alex Palzewicz",
+    name: "Mr Alex Palzewicz",
     role: "Enterprise Consultant",
     category: "Consultant",
     image: "/images/Alex-P.jpg",
@@ -28,7 +28,7 @@ const teamMembers = [
     description: "Alex works closely with corporate clients to develop legal strategies and resolve complex business disputes."
   },
   {
-    name: "Alexandra Furr",
+    name: "Ms Alexandra Furr",
     role: "Senior Consultant",
     category: "Senior Consultant",
     image: "/images/Alex-F.jpg",
@@ -36,7 +36,7 @@ const teamMembers = [
     description: "Alexandra helps businesses optimize their legal processes and ensure compliance with evolving regulations."
   },
   {
-    name: "Barron K. Henly",
+    name: "Mr Barron K. Henly",
     role: "Consultant",
     category: "Consultant",
     image: "/images/AffinityTeam-Barronv2.jpg",
@@ -44,7 +44,7 @@ const teamMembers = [
     description: "Barron assists startups and enterprises in securing their intellectual assets and protecting their brand identity."
   },
   {
-    name: "Carla Anderson",
+    name: "Mrs Carla Anderson",
     role: "Enterprise Project Analyst",
     category: "Analyst",
     image: "/images/profile-pic-web.jpg",
@@ -52,7 +52,7 @@ const teamMembers = [
     description: "Carla analyzes legal risks and develops strategic insights to enhance business operations and compliance."
   },
   {
-    name: "Chad Fox",
+    name: "Mr Chad Fox",
     role: "Business Consultant",
     category: "Consultant",
     image: "/images/Chad-Fox_Team-Member.png",
@@ -60,7 +60,7 @@ const teamMembers = [
     description: "Chad works with legal professionals to streamline operations and improve financial performance."
   },
   {
-    name: "Debbie Foster",
+    name: "Mrs Debbie Foster",
     role: "Chief Executive Consultant",
     category: "Senior Consultant",
     image: "/images/AffinityTeam-Debbie-1.jpg",
