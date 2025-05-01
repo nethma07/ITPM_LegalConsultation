@@ -26,7 +26,7 @@ export async function sendZoomEmail(toEmail, clientName) {
     from: process.env.EMAIL_USER,
     to: toEmail,
     subject: 'Your Legal Consultation Zoom Meeting',
-    text: `Hi ${clientName},\n\nYour consultation meeting is scheduled.\nHere is your Zoom meeting ID: ${zoomID}\n\nThank you,\nLaw Firm`
+    text: `Hi ${clientName},\n\nYour consultation meeting is scheduled.\nHere is your Zoom meeting ID: ${zoomID}\n\nThank you,\nSmart Legal`
   };
 
   try {

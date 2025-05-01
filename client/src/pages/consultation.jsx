@@ -75,21 +75,7 @@ const Consultation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setShowConfirmationModal(true); // Show the confirmation modal
-    try {
-      await axios.post('http://localhost:8000/api/schedule', {
-        clientName,
-        email
-      });
-      alert('Zoom ID sent to your email!');
-    } catch (err) {
-      console.error(err);
-      alert('Failed to send email.');
-    };
-    return (
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Schedule</button>
-      </form>
-    );
+    
   };
   
 
@@ -193,9 +179,21 @@ const Consultation = () => {
   
         if (response.ok && result.consultationId) {
           setMessage({ type: "success", text: "Consultation scheduled successfully!" });
-          setFormVisible(false);
-          setShowSuccessDialog(true); // Show success dialog
-          setShowConfirmationModal(false); // Close the confirmation modal
+        
+          // Send email with Zoom ID
+          try {
+            await axios.post("http://localhost:8000/api/schedule", {
+              clientName: formData.fullName,
+              email: formData.email
+            });
+            alert("Zoom ID sent to your email!");
+          } catch (emailErr) {
+            console.error("Failed to send Zoom email:", emailErr);
+            alert("Consultation was created, but failed to send Zoom ID.");
+          }
+        
+          setShowSuccessDialog(true);
+          setShowConfirmationModal(false);
           setFormVisible(false);
           setSelectedDate(null);
           setSelectedTimeSlot(null);
@@ -206,12 +204,10 @@ const Consultation = () => {
             consultationType: "",
             remark: "",
           });
-
-          setConsultationResult(result); // Save the result in state
-  
-          // Redirect to ViewConsultation page with the correct ID
-          
-        } else {
+        
+          setConsultationResult(result);
+        }
+         else {
           setMessage({ type: "error", text: result.message || "Failed to schedule consultation" });
         }
       } catch (jsonError) {
