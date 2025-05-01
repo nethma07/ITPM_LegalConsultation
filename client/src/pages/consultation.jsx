@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import {
   Container,
@@ -34,6 +35,8 @@ const Consultation = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
   const [formVisible, setFormVisible] = useState(false);
+  const clientName = 'Nipuni';
+  const email = 'nipunigunawardana777@gmail.com';
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -72,7 +75,23 @@ const Consultation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setShowConfirmationModal(true); // Show the confirmation modal
+    try {
+      await axios.post('http://localhost:8000/api/schedule', {
+        clientName,
+        email
+      });
+      alert('Zoom ID sent to your email!');
+    } catch (err) {
+      console.error(err);
+      alert('Failed to send email.');
+    };
+    return (
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Schedule</button>
+      </form>
+    );
   };
+  
 
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -554,7 +573,7 @@ const Consultation = () => {
   <DialogContent sx={{ textAlign: "center", px: 3, pb: 2 }}>
     <Typography variant="body1" sx={{ fontSize: "16px", color: "#444" }}>
       Your virtual consultation has been successfully booked.  
-      A confirmation email with the Zoom link has been sent.  
+      A confirmation email with the Zoom ID has been sent.  
       You can view or manage your appointment anytime.
     </Typography>
   </DialogContent>

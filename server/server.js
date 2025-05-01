@@ -3,6 +3,7 @@ import dotenv from "dotenv"; // Import dotenv
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { sendZoomEmail } from './mailService.js';
 import { ConsultationRouter } from "./routes/consultationRouter.js"; // Adjust the path as needed
 
 // Load environment variables from .env file
@@ -34,6 +35,19 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 // Register consultation routes
 app.use("/consultation", ConsultationRouter);
+
+// Add this route to handle Zoom email scheduling
+app.post("/api/schedule", async (req, res) => {
+  const { clientName, email } = req.body;
+
+  try {
+    await sendZoomEmail(email, clientName);
+    res.status(200).json({ message: "Zoom ID sent to email." });
+  } catch (err) {
+    console.error("Error in sending email:", err);
+    res.status(500).json({ error: "Failed to send Zoom ID email." });
+  }
+});
 
 app.use("/", (req, res) => {
   res.send("Hello");
