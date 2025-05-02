@@ -108,8 +108,9 @@ const RescheduleAppointment = () => {
           required
         >
           <MenuItem value="Legal Advice">Legal Advice</MenuItem>
-          <MenuItem value="Contract Review">Contract Review</MenuItem>
-          <MenuItem value="Dispute Resolution">Dispute Resolution</MenuItem>
+          <MenuItem value="Case Evaluation">Case Evaluation</MenuItem>
+          <MenuItem value="Document Review">Document Review</MenuItem>
+          <MenuItem value="Other">Other</MenuItem>
         </TextField>
         <TextField
           label="Remark"
@@ -122,6 +123,7 @@ const RescheduleAppointment = () => {
         <Button variant="contained" color="primary" onClick={handleUpdate}>
           Update Appointment
         </Button>
+
       </Box>
     </Container>
   );
