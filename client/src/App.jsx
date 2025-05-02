@@ -12,6 +12,8 @@ import Consultation from "./pages/consultation";
 import ViewAppointment from "./pages/viewAppointment";
 import Dashboard from "./pages/dashboard";
 import AddLawyer from "./pages/addLawyer";
+import RescheduleAppointment from './pages/rescheduleAppointment';
+
 
 function App() {
 
@@ -37,6 +39,8 @@ function App() {
         <Route path="/consultation-form" element={<ConsultationForm />} /> {/* Added this route */}
         <Route path="/dashboard" element={<Dashboard handleLogout={handleLogout} handleDeleteAccount={handleDeleteAccount} />} />
         <Route path="/add-lawyer" element={<AddLawyer />} />
+        <Route path="/consultation/reschedule/:id" element={<RescheduleAppointment />} />
+
 
       </Routes>
       

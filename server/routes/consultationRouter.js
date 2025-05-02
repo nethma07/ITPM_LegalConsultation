@@ -76,6 +76,33 @@ router.get("/get/:id", async (req, res) => {
   }
 });
 
+// Update (reschedule) a consultation by ID
+router.put("/reschedule/:id", async (req, res) => {
+  try {
+    const { fullName, email, phoneNumber, consultationType, remark } = req.body;
+
+    if (!fullName || !email || !phoneNumber || !consultationType) {
+      return res.status(400).json({ message: "All required fields must be filled" });
+    }
+
+    const updated = await Consultation.findByIdAndUpdate(
+      req.params.id,
+      { fullName, email, phoneNumber, consultationType, remark },
+      { new: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ message: "Consultation not found" });
+    }
+
+    res.status(200).json({ message: "Appointment rescheduled successfully", consultation: updated });
+  } catch (error) {
+    console.error("Error rescheduling consultation:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
 // Delete a consultation by ID
 router.delete("/:id", async (req, res) => {
   try {
