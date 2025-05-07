@@ -13,6 +13,8 @@ import ViewAppointment from "./pages/viewAppointment";
 import Dashboard from "./pages/dashboard";
 import AddLawyer from "./pages/addLawyer";
 import RescheduleAppointment from './pages/rescheduleAppointment';
+import LandingPage from './pages/landingPage';
+
 
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
       <Header /> {/* Include Header here */}
       
       <Routes>
-        <Route path="/" element={<Team />} />
+      <Route path="/" element={<LandingPage />} />
         <Route path="/team" element={<Team />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/consultation" element={<Consultation />} />
